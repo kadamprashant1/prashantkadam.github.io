@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/prashantkadam.github.io/', // Root domain deployment (prashantkadam.github.io)
+  base: '/portfolio', // Root domain deployment (prashantkadam.github.io)
   plugins: [
     react(),
     tailwindcss(),
