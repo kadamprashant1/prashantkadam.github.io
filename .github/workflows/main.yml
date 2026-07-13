@@ -11,6 +11,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,7 +37,8 @@ jobs:
         # Runs Vite build and creates the optimized dist folder.
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # Uses gh-pages with the workflow token so git push is authenticated.
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+        # Publishes the dist folder to the gh-pages branch using the action's built-in auth.
